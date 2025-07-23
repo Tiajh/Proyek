@@ -6,14 +6,15 @@
 </head>
 <body>
     <h1>Daftar Produk</h1>
-    <ul class="flex">
+    <ul>
         @foreach($products as $id => $product)
-        <li><a href="{{ url('/product/' . $id) }}">
-                {{ $product['name'] }} - Rp{{ number_format($product['price'], 0, ',','.' )}}
+        <li>
+            <a href="{{ url('/product/' . $id) }}">
+                {{ $product['name'] }} - Rp{{ number_format($product['price'], 0, ',','.' ) }}
             </a>
-        </li>
-            
+        </li>    
         @endforeach
     </ul>
 </body>
+
 </html>

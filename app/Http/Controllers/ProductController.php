@@ -12,15 +12,21 @@ class ProductController extends Controller
         3 => ['name' => 'Notebook Dev', 'price' => 50000, 'jenis'=> 'Pakaian', 'merek' => 'inkalum', 'material' => 'kertas'],
     ];
 
+    // Menampilkan daftar produk
     public function index()
     {
         $products = $this->products;
         return view('products.index', compact('products'));
     }
-        public function show($id)
 
+    // Menampilkan detail produk
+    public function show($id)
     {
-        $products = $this->products[$id];
-        return view('products.detail', compact('products'));
-}
+        if (!array_key_exists($id, $this->products)) {
+            abort(404);
+        }
+
+        $product = $this->products[$id];
+        return view('products.show', compact('product'));
+    }
 }

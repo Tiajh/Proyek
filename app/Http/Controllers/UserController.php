@@ -3,12 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function create()
+    public function index()
     {
-        return view('user.index');
+        $allusers = DB::table('users')->get();
+        $firstUser = DB::table('users')->first();
+        $userNames = DB::table('users')->pluck('name');
+        $userCount = DB::table('users')->count();
+        $orderedUsers = DB::table('users')->orderBy('name')->get();
+        $limitUsers = DB::table('users')->limit(2)->get();
+
+        return view('user.user', compact(
+            'allusers',
+            'firstUser',
+            'userNames',
+            'userCount',
+            'orderedUsers',
+            'limitUsers'
+        ));
     }
 
     public function store(Request $request)
