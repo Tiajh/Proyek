@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Citra',
                 'email' => 'citra@example.com',
-                'acive' => true,
+                'acive' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],  
